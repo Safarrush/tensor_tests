@@ -16,5 +16,9 @@ class SbisContactPage(BasePage):
         kamchatsk = self.find_elem(
             (By.CSS_SELECTOR, '[title="Камчатский край"]'), time=10)
         self.click_element(kamchatsk)
+
+        # partners2 = self.driver.find_elements((
+        #     By.CSS_SELECTOR, '.controls-BaseControl__viewContainer'))
+        # return partners1, partners2
         # region_input.send_keys(region)
         # region_input.send_keys(Keys.RETURN)

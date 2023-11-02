@@ -19,7 +19,9 @@ class SbisPage(BasePage):
     def defining_region(self):
         region_input = self.find_elem(
             (By.CSS_SELECTOR, 'span.sbis_ru-Region-Chooser__text.sbis_ru-link'))
-        return region_input.text
+        partners2 = self.find_elem((
+            By.CSS_SELECTOR, '.controls-BaseControl__viewContainer'))
+        return region_input.text, partners2.text
         # self.click_element(region_input)
         # kamchatsk = self.find_elem(
         #     (By.CSS_SELECTOR, '[title="Камчатский край"]'))
