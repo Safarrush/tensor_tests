@@ -2,3 +2,4 @@ selenium
 pytest
 selenium-authenticated-proxy
 pyautogui
+requests

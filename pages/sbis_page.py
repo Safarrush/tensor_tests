@@ -6,6 +6,9 @@ from selenium.webdriver.common.keys import Keys
 class SbisPage(BasePage):
     URL = "https://sbis.ru"
 
+    def go_to_site(self):
+        self.open_url(self.URL)
+
     def go_to_contacts(self):
         self.open_url(self.URL)
         contacts_button = self.find_elem((By.LINK_TEXT, "Контакты"))
@@ -22,9 +25,10 @@ class SbisPage(BasePage):
         partners2 = self.find_elem((
             By.CSS_SELECTOR, '.controls-BaseControl__viewContainer'))
         return region_input.text, partners2.text
-        # self.click_element(region_input)
-        # kamchatsk = self.find_elem(
-        #     (By.CSS_SELECTOR, '[title="Камчатский край"]'))
-        # self.click_element(kamchatsk)
-        # region_input.send_keys(region)
-        # region_input.send_keys(Keys.RETURN)
+
+    def click_download_sbis_link(self):
+        download_sbis_link = self.find_elem(
+            (By.LINK_TEXT, "Скачать СБИС"), time=10)
+        self.execute_script(
+            "arguments[0].scrollIntoView();", download_sbis_link)
+        self.click_element(download_sbis_link)
