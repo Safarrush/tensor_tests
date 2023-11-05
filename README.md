@@ -66,11 +66,17 @@ python -m pip install --upgrade pip
 python pip install -r requirements.txt
 ```
 
-### 4) Запустить тесты
+### 4) Запустить тесты без формирования отчета
 ```
 pytest -s -v tests/*.py
 ```
 
+### 4) Запустить тесты с отчетом
+```
+pytest tests/*.py --alluredir=./allure-results
+npm install --save-dev allure-commandline
+npx allure-commandline serve
+```
 
 # Об авторе
 - Сафаргалеев Рушан
