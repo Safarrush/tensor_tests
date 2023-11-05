@@ -1,18 +1,23 @@
 from selenium.webdriver.common.by import By
-from .base_page import BasePage
-from selenium.webdriver.common.keys import Keys
+
+from configuration import (XPATH_DOWNLOAD_EXE_FILE,
+                           XPATH_DOWNLOAD_SBIS_PLUGIN_BUTTON)
+from pages.base_page import BasePage
 
 
 class SBISDownloadPage(BasePage):
+    """
+    Класс страницы для скачивания приложений СБИС".
+    """
 
     def click_download_sbis_plugin_button(self):
         download_button = self.find_elem(
-            (By.XPATH, "//div[@class='controls-TabButton__caption' and text()='СБИС Плагин']"))
+            (By.XPATH, XPATH_DOWNLOAD_SBIS_PLUGIN_BUTTON))
         self.execute_script("arguments[0].click();", download_button)
         self.click_element(download_button)
 
     def click_download_button(self):
         download_button = self.find_elem(
-            (By.XPATH, "//a[contains(text(), 'Скачать (Exe 3.66 МБ)')]"))
+            (By.XPATH, XPATH_DOWNLOAD_EXE_FILE))
         self.execute_script("arguments[0].click();", download_button)
         self.download_file(download_button)

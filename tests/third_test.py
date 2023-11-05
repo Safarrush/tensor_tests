@@ -1,35 +1,38 @@
-import os
-import pytest
-from selenium import webdriver
-from pages.sbis_page import SbisPage
-from pages.sbis_download_page import SBISDownloadPage
+import shutil
 import time
 
+import allure
 
-@pytest.fixture(scope="function")
-def driver():
-    driver = webdriver.Chrome()
-    yield driver
-    driver.quit()
+from configuration import (DOWNLOAD_DIRECTORY, DOWNLOADED_FILE_PATH,
+                           EXPECTED_FILE_SIZE_MB)
+from pages.sbis_download_page import SBISDownloadPage
+from pages.sbis_page import SbisPage
+from src.enums.global_enums import GlobalErrorMessages
+from utils.file_operations import check_file_size, is_file_downloaded
 
 
-def test_download_sbis_plugin(driver):
-    sbis_page = SbisPage(driver)
+@allure.feature("Страница скачивания приложения СБИС")
+@allure.story("Проверка размера скачанного файла 'СБИС Плагин'")
+def test_download_sbis_plugin(browser):
+    """
+    Проверка размера скачанного файла 'СБИС Плагин'.
+    """
+    sbis_page = SbisPage(browser)
     sbis_page.go_to_site()
-
     sbis_page.click_download_sbis_link()
-    time.sleep(5)
-    download_page = SBISDownloadPage(driver)
-    download_page.click_download_sbis_plugin_button()
 
+    time.sleep(5)
+
+    download_page = SBISDownloadPage(browser)
+    time.sleep(5)
+    download_page.click_download_sbis_plugin_button()
     download_page.click_download_button()
 
-    download_directory = os.path.join(os.getcwd(), "downloads")
-    downloaded_file_path = os.path.join(
-        download_directory, "sbisplugin-setup-web.exe")
-    assert os.path.isfile(downloaded_file_path)
-    file_size = os.path.getsize(downloaded_file_path)
-    file_size_mb = file_size / (1024 * 1024)
-    expected_file_size_mb = 3.66
-    assert pytest.approx(file_size_mb, rel=1e-2) == expected_file_size_mb
-    os.remove(downloaded_file_path)
+    assert (is_file_downloaded(
+        DOWNLOADED_FILE_PATH
+    )), GlobalErrorMessages.DOWNLOAD_ERROR.value
+    assert (check_file_size(
+        DOWNLOADED_FILE_PATH, EXPECTED_FILE_SIZE_MB)
+    ), GlobalErrorMessages.SIZE_FILE_ERROR.value
+
+    shutil.rmtree(DOWNLOAD_DIRECTORY)

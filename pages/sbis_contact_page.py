@@ -1,24 +1,22 @@
 from selenium.webdriver.common.by import By
-from .base_page import BasePage
-from selenium.webdriver.common.keys import Keys
+
+from configuration import (CSS_SELECTOR_SELECT_KAMCHATSK,
+                           CSS_SELECTOR_SELECT_REGION, SBIS_CONTACTS_URL)
+from pages.base_page import BasePage
 
 
 class SbisContactPage(BasePage):
-    URL = "https://sbis.ru/contacts/"
+    """
+    Класс страницы "СБИС Контакты".
+    """
 
     def go_to_site(self):
-        self.open_url(self.URL)
+        self.open_url(SBIS_CONTACTS_URL)
 
     def select_region(self):
         region_input = self.find_elem(
-            (By.CSS_SELECTOR, 'span.sbis_ru-Region-Chooser__text.sbis_ru-link'))
+            (By.CSS_SELECTOR, CSS_SELECTOR_SELECT_REGION))
         self.click_element(region_input)
-        kamchatsk = self.find_elem(
-            (By.CSS_SELECTOR, '[title="Камчатский край"]'), time=10)
-        self.click_element(kamchatsk)
-
-        # partners2 = self.driver.find_elements((
-        #     By.CSS_SELECTOR, '.controls-BaseControl__viewContainer'))
-        # return partners1, partners2
-        # region_input.send_keys(region)
-        # region_input.send_keys(Keys.RETURN)
+        kamchatsk_button = self.find_elem(
+            (By.CSS_SELECTOR, CSS_SELECTOR_SELECT_KAMCHATSK), time=10)
+        self.click_element(kamchatsk_button)
