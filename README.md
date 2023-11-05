@@ -45,6 +45,7 @@ brew install node
 ```
 ### 4) Запустите скрипт через терминал:
 ```
+chmod +x run_tests_mac.sh
 ./run_tests_mac.sh
 ```
 
