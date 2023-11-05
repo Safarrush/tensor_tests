@@ -1,6 +1,7 @@
-selenium
-pytest
-selenium-authenticated-proxy
-pyautogui
-requests
-allure-pytest
+allure-pytest==2.13.2
+allure-python-commons==2.13.2
+PyAutoGUI==0.9.54
+pytest==7.4.3
+requests==2.31.0
+selenium==4.15.2
+selenium-authenticated-proxy==1.0.1
