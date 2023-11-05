@@ -22,7 +22,23 @@
 ./run_tests_windows.sh
 ```
 
-Запуск всех сценариев теста:
+# MacOS
+
+### 1) Установить Java Runtime Environment (JRE):
+```
+- Скачайте и установите JRE с официального сайта Java: http://www.java.com
+```
+### 2) Установить Node.js (можно через терминал):
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install node 
+```
+### 3) Запустите скрипт через терминал:
+```
+./run_tests_mac.sh
+```
+
+## Запуск всех сценариев теста в ручную:
 
 ### 1) Склонировать репозиторий:
 Клонировать репозиторий (git clone) и перейти в него в командной строке (cd)
