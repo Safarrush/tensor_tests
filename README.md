@@ -49,7 +49,7 @@ chmod +x run_tests_mac.sh
 ./run_tests_mac.sh
 ```
 
-## Запуск всех сценариев теста в ручную:
+## Запуск всех сценариев теста в ручную (Windows):
 
 ### 1) Склонировать репозиторий:
 Клонировать репозиторий (git clone) и перейти в него в командной строке (cd)
@@ -71,7 +71,7 @@ python pip install -r requirements.txt
 pytest -s -v tests/*.py
 ```
 
-### 4) Запустить тесты с отчетом
+### 4) Запустить тесты с отчетом (заранее нужно установить доп.модули, по инструкции выше)
 ```
 pytest tests/*.py --alluredir=./allure-results
 npm install --save-dev allure-commandline
