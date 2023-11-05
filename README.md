@@ -2,6 +2,19 @@
 
 Целью данного проекта было создание автотеста, способного провести тест по трем заданным сценариям.
 
+## Запуск всех сценариев теста c формированием отчета через скрипт:
+# Windows
+
+### 1) Установить Java Runtime Environment (JRE):
+```
+- Перейдите на официальный сайт Oracle Java: https://www.oracle.com/java/technologies/javase-downloads.html
+- В разделе "Java SE" выберите версию JRE для Windows. Обычно, рекомендуется выбирать последнюю стабильную версию.
+- Принимайте лицензионное соглашение и выберите версию JRE для загрузки. В большинстве случаев это будет "Windows x64 Installer" для 64-разрядной версии Windows или "Windows x86 Installer" для 32-разрядной версии Windows.
+- Загрузите установочный файл JRE с официального сайта Oracle. Это будет исполняемый файл с расширением ".exe".
+- Запустите скачанный установочный файл и следуйте инструкциям мастера установки. По умолчанию, JRE будет установлена в каталог "C:\Program Files\Java".
+```
+
+
 Запуск всех сценариев теста:
 
 ### 1) Склонировать репозиторий:
@@ -15,8 +28,8 @@ source venv/scripts/activate
 
 ### 3) Установить зависимости из файла requirements.txt:
 ```
-python3 -m pip install --upgrade pip
-python3 pip install -r requirements.txt
+python -m pip install --upgrade pip
+python pip install -r requirements.txt
 ```
 
 ### 4) Запустить тесты
